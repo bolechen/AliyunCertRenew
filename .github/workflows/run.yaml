@@ -42,9 +42,9 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          git checkout status 2>/dev/null || (git checkout --orphan status && git rm -rf .)
+          git checkout --orphan status && git rm -rf .
           
           echo "Workflow last executed at: $(date)" > README.md
           git add README.md
           git commit -m "Status: successful run [skip ci]"
-          git push origin status
+          git push origin status -f
